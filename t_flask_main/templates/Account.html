@@ -1,0 +1,76 @@
+{% extends 'layouts.html' %}
+{% block contentA %}
+<div class="container w-50">
+    <img src="{{ image_url }}" alt="Profile Picture">
+</div>
+<div class="container w-50">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{ legend }}</legend>
+            
+            <div class="form-group">
+                {{ form.firstname.label(class="form-control-label") }}
+                {% if form.firstname.errors %}
+                    {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                    {% for error in form.firstname.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                {% else %}
+                    {{ form.firstname(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.lastname.label(class="form-control-label") }}
+                {% if form.lastname.errors %}
+                    {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                    {% for error in form.lastname.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                {% else %}
+                    {{ form.lastname(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.username.label(class="form-control-label") }}
+                {% if form.username.errors %}
+                    {{ form.username(class="form-control form-control-lg is-invalid") }}
+                    {% for error in form.username.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                {% else %}
+                    {{ form.username(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    {% for error in form.email.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                {% else %}
+                    {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.picture.label }}
+                {{ form.picture(class="form-control-file") }}
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span><br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </fieldset>
+
+        <div class="form-group mt-4">
+            {{ form.submit(class='btn btn-primary') }}
+        </div>
+    </form>
+</div>
+{% endblock contentA %}
